@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>📺 Painel de Chamados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding painel-content">
+  <h2 class="painel-titulo">Últimas senhas chamadas</h2>
+  <div *ngIf="(painel$ | async) as senhas">
+    <div *ngIf="senhas.length === 0" class="vazio">
+      <ion-icon name="hourglass-outline" size="large"></ion-icon>
+      <p>Nenhuma senha chamada ainda.</p>
+    </div>
+    <ion-card *ngFor="let s of senhas; let i = index"
+      [ngClass]="'card-tipo-' + s.tipo.toLowerCase()"
+      [class.destaque]="i === 0">
+      <ion-card-header>
+        <ion-card-subtitle>Guichê {{ s.guiche }}</ion-card-subtitle>
+        <ion-card-title>{{ s.numero }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-badge [color]="corBadge(s.tipo)">{{ s.tipo | tipoLabel }}</ion-badge>
+        <span class="hora">{{ s.chamadaEm | date:'HH:mm:ss' }}</span>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

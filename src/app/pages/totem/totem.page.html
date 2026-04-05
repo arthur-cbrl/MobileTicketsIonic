@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>🏥 Totem de Atendimento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="!expedienteAberto" class="fora-expediente">
+    <ion-icon name="time-outline" size="large"></ion-icon>
+    <h2>Fora do expediente</h2>
+    <p>Atendimento disponível das <strong>07:00</strong> às <strong>17:00</strong>.</p>
+  </div>
+
+  <div *ngIf="expedienteAberto">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Selecione o tipo de atendimento</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button expand="block" color="danger" (click)="emitir('SP')" class="btn-tipo">
+          <ion-icon slot="start" name="star-outline"></ion-icon>
+          Prioritário (SP)
+        </ion-button>
+        <ion-button expand="block" color="warning" (click)="emitir('SE')" class="btn-tipo">
+          <ion-icon slot="start" name="document-outline"></ion-icon>
+          Retirada de Exames (SE)
+        </ion-button>
+        <ion-button expand="block" color="success" (click)="emitir('SG')" class="btn-tipo">
+          <ion-icon slot="start" name="people-outline"></ion-icon>
+          Geral (SG)
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="ultimaSenha" class="senha-card">
+      <ion-card-header>
+        <ion-card-subtitle>Sua senha</ion-card-subtitle>
+        <ion-card-title class="numero-senha">{{ ultimaSenha.numero }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Tipo:</strong> {{ ultimaSenha.tipo | tipoLabel }}</p>
+        <p><strong>Emitida em:</strong> {{ ultimaSenha.emitidaEm | date:'HH:mm:ss' }}</p>
+        <p *ngIf="ultimaSenha.descartada" class="descartada">⚠️ Senha descartada automaticamente.</p>
+        <p *ngIf="!ultimaSenha.descartada" class="aguarde">✅ Aguarde ser chamado no painel.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

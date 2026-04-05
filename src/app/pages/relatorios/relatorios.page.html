@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>📊 Relatórios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-segment [(ngModel)]="filtro" (ionChange)="gerarRelatorio()">
+    <ion-segment-button value="diario"><ion-label>Diário</ion-label></ion-segment-button>
+    <ion-segment-button value="mensal"><ion-label>Mensal</ion-label></ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="relatorio" class="relatorio-wrapper">
+    <ion-card>
+      <ion-card-header><ion-card-title>Totais Gerais</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label>Senhas Emitidas</ion-label>
+          <ion-badge slot="end" color="primary">{{ relatorio.emitidas }}</ion-badge>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Senhas Atendidas</ion-label>
+          <ion-badge slot="end" color="success">{{ relatorio.atendidas }}</ion-badge>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Não Atendidas</ion-label>
+          <ion-badge slot="end" color="danger">{{ relatorio.emitidas - relatorio.atendidas }}</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Por Tipo de Senha</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let tipo of tipos" lines="full">
+          <ion-badge slot="start" [color]="corBadge(tipo)">{{ tipo }}</ion-badge>
+          <ion-label class="ion-padding-start">
+            <p>Emitidas: <strong>{{ relatorio.porTipo[tipo].emitidas }}</strong></p>
+            <p>Atendidas: <strong>{{ relatorio.porTipo[tipo].atendidas }}</strong></p>
+            <p>TM Médio: <strong>{{ relatorio.tmMedio[tipo] | number:'1.1-1' }} min</strong></p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Detalhes das Senhas</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <div *ngIf="relatorio.detalhes.length === 0" class="vazio">Nenhuma senha encontrada.</div>
+        <ion-list>
+          <ion-item *ngFor="let s of relatorio.detalhes" lines="full">
+            <ion-label>
+              <h2>{{ s.numero }}</h2>
+              <p>Tipo: {{ s.tipo | tipoLabel }} | Emitida: {{ s.emitidaEm | date:'dd/MM HH:mm' }}</p>
+              <p *ngIf="s.atendida">Guichê {{ s.guiche }} | Chamada: {{ s.chamadaEm | date:'HH:mm:ss' }} | TM: {{ s.tmMinutos | number:'1.1-1' }} min</p>
+              <p *ngIf="s.descartada" class="descartada">Descartada</p>
+              <p *ngIf="!s.atendida && !s.descartada" class="pendente">Pendente</p>
+            </ion-label>
+            <ion-icon slot="end" [name]="s.atendida ? 'checkmark-circle' : 'close-circle'" [color]="s.atendida ? 'success' : 'danger'"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

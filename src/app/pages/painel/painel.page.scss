@@ -1,0 +1,12 @@
+.painel-content { --background: #111; color: #fff; }
+.painel-titulo { text-align: center; font-size: 1.4rem; margin-bottom: 16px; color: #eee; }
+ion-card { border-radius: 12px; margin-bottom: 12px; }
+ion-card.destaque { transform: scale(1.04); border: 2px solid var(--ion-color-primary); }
+ion-card.card-tipo-sp { --background: #3a0000; }
+ion-card.card-tipo-se { --background: #3a2e00; }
+ion-card.card-tipo-sg { --background: #003a0a; }
+ion-card-title { font-size: 1.6rem; letter-spacing: 2px; color: #fff; }
+ion-card-subtitle { color: #aaa; }
+.hora { margin-left: 12px; font-size: 0.85rem; color: #ccc; }
+.vazio { display: flex; flex-direction: column; align-items: center; margin-top: 60px; color: #666; }
+.vazio ion-icon { font-size: 3rem; margin-bottom: 12px; }

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>👩‍⚕️ Atendente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of filaInfo$ | async | keyvalue">
+        <ion-card class="contador-card">
+          <ion-card-content class="ion-text-center">
+            <div class="numero-fila">{{ item.value }}</div>
+            <ion-badge [color]="corBadge(item.key)">{{ item.key }}</ion-badge>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" color="primary" size="large" (click)="chamarProximo()"
+    [disabled]="!expedienteAberto" class="btn-chamar">
+    <ion-icon slot="start" name="megaphone-outline"></ion-icon>
+    Chamar Próximo
+  </ion-button>
+
+  <ion-card *ngIf="ultimaChamada" class="chamada-card">
+    <ion-card-header>
+      <ion-card-subtitle>Senha chamada agora</ion-card-subtitle>
+      <ion-card-title>{{ ultimaChamada.numero }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Tipo:</strong> {{ ultimaChamada.tipo | tipoLabel }}</p>
+      <p><strong>Guichê:</strong> {{ ultimaChamada.guiche }}</p>
+      <p><strong>TM estimado:</strong> {{ ultimaChamada.tmMinutos | number:'1.1-1' }} min</p>
+      <p><strong>Chamada às:</strong> {{ ultimaChamada.chamadaEm | date:'HH:mm:ss' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-text color="medium" *ngIf="!expedienteAberto">
+    <p class="ion-text-center">Fora do expediente (07:00 – 17:00).</p>
+  </ion-text>
+</ion-content>
