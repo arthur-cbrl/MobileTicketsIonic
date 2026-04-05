@@ -58,7 +58,8 @@ Autor: João Ferreira.
 Instituição: UNINASSAU.
 
 exemplos da interface do programa:
-![f109ddef-faa5-426a-9e0f-77edb8fee1ff](https://github.com/user-attachments/assets/6ac9fea4-b4df-44bd-85bb-e4adf9d1818a)
-![ca300e9e-d7d9-4c59-b928-1c6a90e61259](https://github.com/user-attachments/assets/4e8d64fb-dcb8-4bb0-8c40-ba17d9356abd)
-![a016733d-2f87-4f7c-b86d-f30f291a48fa](https://github.com/user-attachments/assets/44402b68-d88a-4460-8f03-bcacbe61c14b)
-![82392db4-68ce-45b5-bafd-a2d2762c0f2b](https://github.com/user-attachments/assets/c2d9407d-1f44-4192-83b3-6da916947422)
+![MobileTicketsIonic1](https://github.com/user-attachments/assets/915e4b58-a164-4de6-a280-4f20dc10539a)
+![MobileTicketsIonic2](https://github.com/user-attachments/assets/6d659d49-4293-4c4b-8932-202f7d58c425)
+![MobileTicketsIonic3](https://github.com/user-attachments/assets/9f2dca28-b3d1-49a3-9e9c-7c8235790c6b)
+![MobileTicketsIonic4](https://github.com/user-attachments/assets/b6273d7a-75c0-4caa-b128-84fadf365b21)
+
