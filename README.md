@@ -43,7 +43,7 @@ Ionic CLI instalado (npm install -g @ionic/cli).
 Instalação
 Clonar e entrar na pasta: git clone https://github.com/seu-usuario/MobileTicketsIonic.git cd MobileTicketsIonic
 Instalar dependências: npm install
-Rodar no navegador: npm start
+Rodar no navegador: ionic serve
 
 Funcionalidades Implementadas
 Navegação por Abas: Acesso rápido entre Totem, Painel, Atendente e Relatórios através da barra inferior.
@@ -56,7 +56,7 @@ Versões e Créditos
 Versão: Atualmente na Versão 05 (19/06/2025).
 Autor: João Ferreira.
 Instituição: UNINASSAU.
-
+gurpo: arthur cabral 01810694. andré Alisson Chalegre de Lima - 01854549, Otavio martins - 01782584, Rafael Ramos - 01563278
 exemplos da interface do programa:
 ![MobileTicketsIonic1](https://github.com/user-attachments/assets/915e4b58-a164-4de6-a280-4f20dc10539a)
 ![MobileTicketsIonic2](https://github.com/user-attachments/assets/6d659d49-4293-4c4b-8932-202f7d58c425)
